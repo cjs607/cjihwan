@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertMember">
+        INSERT /* com.greedy.jsp.member.model.dao.MemberDAO#insertMember() */
+        <!-- 호출해주는 곳 위치를 어딘지 알수있도록 명시 -->
+          INTO TBL_MEMBER A
+        (
+          A.MEMBER_NO
+        , A.MEMBER_ID
+        , A.MEMBER_PWD
+        , A.NICKNAME
+        , A.PHONE
+        , A.EMAIL
+        , A.ADDRESS
+        )
+        VALUES
+        (
+          SEQ_MEMBER_NO.NEXTVAL
+        , ?
+        , ?
+        , ?
+        , ?
+        , ?
+        , ?
+        )
+	</entry>
+	<entry key="selectEncryptPwd">
+        SELECT /* com.greedy.jsp.member.model.dao.MemberDAO#selectEncryptPwd() */
+               A.MEMBER_PWD
+          FROM TBL_MEMBER A
+         WHERE A.MEMBER_STATUS = 'Y'
+           AND A.MEMBER_ID = ?
+	</entry>
+	<entry key="selectLoginMember">
+        SELECT /* com.greedy.jsp.member.model.dao.MemberDao#selectLotinMember() */
+               A.MEMBER_NO
+             , A.MEMBER_ID
+             , A.NICKNAME
+             , A.PHONE
+             , A.EMAIL
+             , A.ADDRESS
+             , A.ENROLL_DATE
+             , A.MEMBER_ROLE
+             , A.MEMBER_STATUS
+          FROM TBL_MEMBER A
+         WHERE A.MEMBER_STATUS = 'Y'
+           AND A.MEMBER_ID = ?
+	</entry>
+	<entry key="updateMember">
+		UPDATE /* com.greedy.jsp.member.model.dao.MemberDao#updateMember() */
+		       TBL_MEMBER A
+		   SET A.NICKNAME = ?
+		     , A.PHONE = ?
+		     , A.EMAIL = ?
+		     , A.ADDRESS = ?
+		 WHERE A.MEMBER_STATUS = 'Y'
+		   AND A.MEMBER_NO = ?
+	</entry>
+	<entry key="deleteMember">
+        UPDATE /* com.greedy.jsp.member.model.dao.MemberDao#deleteMember() */
+               TBL_MEMBER A
+           SET A.MEMBER_STATUS = 'N'
+         WHERE A.MEMBER_NO = ?
+	</entry>
+</properties>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
